@@ -21,4 +21,19 @@
             implementor="#soapMathUtility"
             address="/mathUtilitySoap"
     />
+
+    <!-- REST Beans -->
+    <bean id="restStudentUtility" class="cd.tomcat.example.StudentUtilityImpl" />
+
+    <!-- REST Endpoints -->
+    <jaxrs:server id="restStudent" address="/rest">
+        <jaxrs:serviceBeans>
+            <ref bean="restStudentUtility" />
+        </jaxrs:serviceBeans>
+
+        <!-- Custom JSON Parser -->
+        <jaxrs:providers>
+            <bean class="cd.tomcat.example.CustomJsonParser" />
+        </jaxrs:providers>
+    </jaxrs:server>
 </beans>
